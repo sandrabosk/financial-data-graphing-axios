@@ -12,7 +12,11 @@ function getPricesInfo() {
     let currency = document.getElementById("currency").value
     axios.get(`http://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${endDate}&currency=${currency}`)
     .then(response => {
-      console.log(response.data)
+    //   console.log(Object(response));
+    //   console.log(Object(response))
+    console.log("keys",Object.keys(response.data));
+
+      console.log("Values",Object.values(response.data))
         datesArray=Object.keys(response.data.bpi);
         pricesArray=Object.values(response.data.bpi);
         document.getElementById("minValue").setAttribute("value", Math.min.apply(Math, pricesArray))
